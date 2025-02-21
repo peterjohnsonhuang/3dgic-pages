@@ -337,3 +337,16 @@ body {
 .title.is-3{
   color: #4CAF50;
 }
+
+.text-columns {
+  display: flex;
+}
+
+.text-column {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+  /* font-weight: bold; */
+}
