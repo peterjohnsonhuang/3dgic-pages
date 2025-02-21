@@ -100,12 +100,6 @@
           </div>
           <div class="item">
             <video controls muted loop playsinline height="100%">
-              <source src="./videos/fly_through_bonsai.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="item">
-            <video controls muted loop playsinline height="100%">
               <source src="./videos/fly_through_flowers.mp4"
                       type="video/mp4">
             </video>
@@ -134,6 +128,12 @@
                       type="video/mp4">
             </video>
           </div>
+          <div class="item">
+            <video controls muted loop playsinline height="100%">
+              <source src="./videos/fly_through_bonsai.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
         </div>
         <p>We optimize adaptive sparse voxels radiance field from multi-view images without SfM points. The fly-through videos are rendered by our SVRaster in >100 FPS.</p>
       </div>
@@ -149,7 +149,7 @@
           <h2 class="title is-3">Overview</h2>
           <div class="content has-text-justified">
             <p>
-              We propose an efficient radiance field rendering algorithm that incorporates a rasterization process on sparse voxels without neural networks or 3D Gaussians. There are two key contributions coupled with the proposed system. The first is to render sparse voxels in the correct depth order along pixel rays by using dynamic Morton ordering. This avoids the well-known popping artifact found in Gaussian splatting. Second, we adaptively fit sparse voxels to different levels of detail within scenes, faithfully reproducing scene details while achieving high rendering frame rates. Our method improves the previous neural-free voxel grid representation by over 4db PSNR and more than 10x rendering FPS speedup, achieving state-of-the-art comparable novel-view synthesis results. Additionally, our neural-free sparse voxels are seamlessly compatible with grid-based 3D processing algorithms. We achieve promising mesh reconstruction accuracy by integrating TSDF-Fusion and Marching Cubes into our sparse grid system.
+              We propose an efficient radiance field rendering algorithm that incorporates a rasterization process on adaptive sparse voxels without neural networks or 3D Gaussians. There are two key contributions coupled with the proposed system. The first is to adaptively and explicitly allocate sparse voxels to different levels of detail within scenes, faithfully reproducing scene details with $65536^3$ grid resolution while achieving high rendering frame rates. Second, we customize a rasterizer for efficient adaptive sparse voxels rendering. We render voxels in the correct depth order by using ray direction-dependent Morton ordering, which avoids the well-known popping artifact found in Gaussian splatting. Our method improves the previous neural-free voxel model by over 4db PSNR and more than 10x FPS speedup, achieving state-of-the-art comparable novel-view synthesis results. Additionally, our voxel representation is seamlessly compatible with grid-based 3D processing techniques such as Volume Fusion, Voxel Pooling, and Marching Cubes, enabling a wide range of future extensions and applications.
             </p>
           </div>
         </div>
@@ -394,7 +394,7 @@
             <br>
             <br>
             <p>
-              <strong>Image segmentation by NV Segformer &rarr; Sparse-voxel semantic field</strong>
+              <strong>Image segmentation by Segformer &rarr; Sparse-voxel semantic field</strong>
             </p>
             <video controls muted loop playsinline height="100%">
               <source src="./videos/fusion_segformer_bicycle.mp4"
@@ -407,7 +407,7 @@
             <br>
             <br>
             <p>
-              <strong>Vision foundation model feature by NV RADIOv2.5 &rarr; Voxel pooling &rarr; Sparse-voxel foudation feature field</strong>
+              <strong>Vision foundation model feature by RADIOv2.5 &rarr; Voxel pooling &rarr; Sparse-voxel foudation feature field</strong>
             </p>
             <video controls muted loop playsinline height="100%">
               <source src="./videos/fusion_radio_bonsai.mp4"
