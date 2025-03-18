@@ -54,6 +54,11 @@
             <sup>3</sup> National Taiwan University
           </div>
 
+          <!-- vendor -->
+          <div class="subtitle is-size-5">
+            CVPR 2025
+          </div>
+
           <!-- TODO: update paper and video link once upload -->
           <div class="column has-text-centered">
             <!-- <div class="publication-links"> -->
@@ -105,6 +110,7 @@
                   <div class="content has-text-justified">
                     <strong>Updates</strong>
                     <ul>
+                      <li><strong>Mar 18, 2025.</strong> Revise literature review. Support depthanythingv2 relative depth loss and mast3r metric depth loss for a better geometry.</li>
                       <li><strong>Mar 8, 2025.</strong> Support ScanNet++ dataset. Check official <a href="https://kaldir.vc.in.tum.de/scannetpp/benchmark/nvs">benchmark</a> for our results on the 3rd-party hidden set evaluation over 50 indoor scenes. Our <a href="https://github.com/NVlabs/svraster/blob/main/articles/scannetpp_dataset.md">short report</a> may be helpful if you want to work on scannet or indoor environement.</li>
                     </ul>
                   </div>
@@ -472,6 +478,47 @@
               <source src="./videos/fusion_langfeat.mp4"
                       type="video/mp4">
             </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Related work</h2>
+          <div class="content has-text-justified">
+            <p>
+              <strong>Data structure</strong>
+              <ul>
+                <li><a href="https://research.nvidia.com/sites/default/files/pubs/2010-02_Efficient-Sparse-Voxel/laine2010tr1_paper.pdf"><u>Sparse Voxel Octrees</u></a> uses an Octree to manage the sparse voxels. </li>
+                <li><a href="https://www.museth.org/Ken/Publications_files/Museth_TOG13.pdf"><u>VDB</u></a> uses a shallow tree with wide branching factor to manage the sparse volumes. Extensions include <a href="https://www.museth.org/Ken/Publications_files/Museth_SIG14.pdf">OpenVDB</a>, <a href="https://research.nvidia.com/labs/prl/nanovdb/nanovdb2021.pdf">NanoVDB</a>, <a href="https://arxiv.org/pdf/2208.04448">NeuralVDB</a>, and the recent <a href="https://arxiv.org/pdf/2407.01781">fVDB</a></li> 
+                <li><u>Our method</u> does not use any advanced data structure.</li>
+              </ul>
+              We simply store all the non-empty voxels of different size in a 1D array. Our rasterizer ensures everything is correctly ordered when rendering. One limitation is that we do not support efficient search (ie., given a point, find its covering voxel). Future work needs to sort the voxel and implement a binary search for this purpose.
+            </p>
+            <p>
+              <strong>Sparse field</strong>
+              <ul>
+                <li><u>Global-sparse-local-dense</u> strategy allocates a tiny dense 3D grid to each sparse volume. Classical methods like <a href="https://niessnerlab.org/papers/2013/4hashing/niessner2013hashing.pdf">Voxel hasing</a>, <a href="https://arxiv.org/pdf/1604.01093">Bundle fusion</a>, and <a href="https://www.open3d.org/docs/latest/tutorial/t_reconstruction_system/voxel_block_grid.html#voxel-block-grid">Open3D</a> uses this strategy to do sensor fusion.</li>
+                <li><u>Implicit sparse neural field</u> like <a href="https://arxiv.org/pdf/2007.11571">NSVF</a> and <a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Takikawa_Neural_Geometric_Level_of_Detail_Real-Time_Rendering_With_Implicit_3D_CVPR_2021_paper.pdf">NGLOD</a> employs MLP network to map the latent feature stored in the Sparse Voxel Octree to the target attributes.</li>
+                <li><u>Our method</u> allocate just a single voxel at leaf nodes with explicit density and color parameters, like <a href="https://arxiv.org/pdf/2112.05131">Plenoxels</a>.</li>
+              </ul>
+            </p>
+            <p>
+              <strong>Scalability</strong>
+              <ul>
+                <li><u>Uniform-level</u> sparse voxels allocates voxel to a given target level. <a href="https://arxiv.org/pdf/2007.11571">NSVF</a>, <a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Takikawa_Neural_Geometric_Level_of_Detail_Real-Time_Rendering_With_Implicit_3D_CVPR_2021_paper.pdf">NGLOD</a>, <a href="https://kaolin.readthedocs.io/en/v0.9.1/modules/kaolin.ops.spc.html">SPC</a>, <a href="https://arxiv.org/pdf/2112.05131">Plenoxels</a> follow this design, which encouters scalability issue when using higher grid resolution for better quality.</li>
+                <li><u>Our method</u> allocates voxel on different Octree levels. We only keep the leaf nodes in a 1D array without advanced data structure.</li>
+              </ul>
+              For now, our maximum Octree levels is 16 which implies 65536<sup>3</sup> maximum grid resolution. Extention to more Octree level should be simple. The increase in rendering time should be minor: 3 extra bits to sort per additional level.
+            </p>
+            <p>
+              <strong>Novel scene representations</strong>
+              <p><a href="https://arxiv.org/pdf/2501.16312">LinPrim</a>, <a href="https://arxiv.org/abs/2502.01157">RadiantFoam</a>, <a href="https://arxiv.org/pdf/2502.07754">MeshSplats</a> are recent methods that use very different and cool approach for reconstruction and novel-view synthesis tasks.</p>
+            </p>
           </div>
         </div>
       </div>
