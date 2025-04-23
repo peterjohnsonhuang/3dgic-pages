@@ -253,44 +253,31 @@
         <div class="column is-full-width">
           <div id="example1" class="bal-container-small">
             <div class="bal-after">
-              <img src="./videos/spinnerf_2_ours.gif">
+              <video
+                id="video-ours"
+                loop muted playsinline preload="auto"
+                style="width:100%; display:block;">
+                <source src="./videos/spinnerf_2_ours.mp4" type="video/mp4">
+              </video>
               <div class="bal-afterPosition afterLabel" style="z-index:1;">
                 Ours
               </div>
             </div>
-            <div class="bal-before" style="width:96.4968152866242%;">
-              <div class="bal-before-inset" style="width: 512px;">
-                <img src="./videos/spinnerf_2_gt.gif">
+            
+            <div class="bal-before" style="width:96.4968%;">
+              <div class="bal-before-inset" style="width:512px;">
+                <video
+                  id="video-original"
+                  loop muted playsinline preload="auto"
+                  style="width:100%; display:block;">
+                  <source src="./videos/spinnerf_2_gt.mp4" type="video/mp4">
+                </video>
                 <div class="bal-beforePosition beforeLabel">
                   Original
                 </div>
               </div>
             </div>
-            <script>
-              window.addEventListener('load', () => {
-                const imgs = [
-                  document.querySelector('.bal-after img'),
-                  document.querySelector('.bal-before img')
-                ];
-                let loaded = 0;
             
-                imgs.forEach(img => {
-                  // hide until we’re ready
-                  img.style.visibility = 'hidden';
-                  img.onload = () => {
-                    if (++loaded === imgs.length) {
-                      // both GIFs are cached → restart them in lock-step
-                      imgs.forEach(img => {
-                        const src = img.src;
-                        img.src = '';    // unload
-                        img.src = src;   // reload from cache
-                        img.style.visibility = 'visible';
-                      });
-                    }
-                  };
-                });
-              });
-            </script>
             <div class="bal-handle" style="left:96.4968152866242%;">
               <span class="handle-left-arrow"></span>
               <span class="handle-right-arrow"></span>
@@ -607,7 +594,29 @@
       </div>
     </div>
   </footer>
-
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const v1 = document.getElementById('video-ours');
+      const v2 = document.getElementById('video-original');
+    
+      // When both videos can play through, reset to 0 and start together
+      let readyCount = 0;
+      [v1, v2].forEach(v => {
+        v.addEventListener('canplaythrough', () => {
+          if (++readyCount === 2) {
+            v1.currentTime = v2.currentTime = 0;
+            Promise.all([v1.play(), v2.play()])
+              .catch(() => {
+                console.warn('Auto-play was prevented; user interaction may be required.');
+              });
+          }
+        });
+      });
+    
+      // (Optional) lock them at the same playback rate
+      v1.playbackRate = v2.playbackRate = 1.0;
+    });
+    </script>
 </body>
 
 </html>
