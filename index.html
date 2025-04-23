@@ -242,10 +242,10 @@
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Inpainting Results</h2>
+          <h2 class="title is-3">Inpainting Results on SPInNeRF Dataset</h2>
           <div class="content has-text-justified">
             <div style="max-width: 700px; margin: auto;">
-              <img src="./images/quantitative_nvs.jpg">
+              <img src="./images/qualitative_spin.jpg">
             </div>
           </div>
         </div>
@@ -397,7 +397,7 @@
         </div>
       </div>
 
-      <div class="columns is-centered">
+      <!-- <div class="columns is-centered">
         <div class="column is-full-width">
           <div id="example5" class="bal-container-small">
             <div class="bal-after">
@@ -446,7 +446,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </section>
@@ -454,75 +454,27 @@
 
   <section class="section">
     <div class="container is-max-desktop">
+      <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Adaptive Sparse Voxel Fusion</h2>
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Ablation</h2>
           <div class="content has-text-justified">
             <p>
-              Fusing 2D modalities into the trained sparse voxels is efficient. The grid points simply take the weighted sum from the 2D views following classical volume fusing method. We show several examples in the following.
+              We verify the effectiveness of our Inferring Depth-Guided Inpainting Mask and Inpainting-guided 3DGS Refinement.
             </p>
-            <p>
-              <strong>Rendered depths &rarr; Sparse-voxel SDF &rarr; Mesh</strong>
-            </p>
-            <div style="margin: auto;">
-              <img src="./images/meshing.jpg">
-            </div>
-            <br>
-            <br>
-            <p>
-              <strong>Image segmentation by Segformer &rarr; Sparse-voxel semantic field</strong>
-              <br>
-              Check it in jupyter notebook <a href="https://github.com/NVlabs/svraster/blob/main/notebooks/demo_segformer.ipynb">here</a>.
-            </p>
-            <div class="text-columns">
-              <div class="text-column">Render view</div>
-              <div class="text-column">3D fused semantic field</div>
-              <div class="text-column">2D Segformer predction</div>
-            </div>
-            <video controls muted loop playsinline height="100%">
-              <source src="./videos/fusion_segformer_bicycle.mp4"
-                      type="video/mp4">
-            </video>
-            <video controls muted loop playsinline height="100%">
-              <source src="./videos/fusion_segformer_room.mp4"
-                      type="video/mp4">
-            </video>
-            <br>
-            <br>
-            <p>
-              <strong>Vision foundation model feature by RADIOv2.5 &rarr; Voxel pooling &rarr; Sparse-voxel foudation feature field</strong>
-              <br>
-              Check it in jupyter notebook <a href="https://github.com/NVlabs/svraster/blob/main/notebooks/demo_vfm_radio.ipynb">here</a>.
-            </p>
-            <div class="text-columns">
-              <div class="text-column">Render view</div>
-              <div class="text-column">3D fused RADIO feature field</div>
-              <div class="text-column">2D RADIO predction</div>
-            </div>
-            <video controls muted loop playsinline height="100%">
-              <source src="./videos/fusion_radio_bonsai.mp4"
-                      type="video/mp4">
-            </video>
-            <video controls muted loop playsinline height="100%">
-              <source src="./videos/fusion_radio_garden.mp4"
-                      type="video/mp4">
-            </video>
-            <br>
-            <br>
-            <p>
-              <strong>Dense CLIP feature by LangSplat &rarr; Voxel pooling &rarr; Sparse-voxel language field</strong>
-            </p>
-            <video controls muted loop playsinline height="100%">
-              <source src="./videos/fusion_langfeat.mp4"
-                      type="video/mp4">
-            </video>
           </div>
         </div>
       </div>
+      <!--/ Abstract. -->
+      <div class="column is-four-fifths"></div>
+      <div class="has-text-centered">
+        <img src="./images/ablation.jpg">
+      </div>
+    </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
@@ -561,7 +513,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <script>
     new BeforeAfter({
@@ -588,12 +540,11 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre>
-<code>@article{Sun2024SVR,
-  title={Sparse Voxels Rasterization: Real-time High-fidelity Radiance Field Rendering},
-  author={Cheng Sun and Jaesung Choe and Charles Loop and Wei-Chiu Ma and Yu-Chiang Frank Wang},
-  journal={ArXiv},
-  year={2024},
-  volume={abs/2412.04459},
+<code>@article{huang20253d,
+  title={3D Gaussian Inpainting with Depth-Guided Cross-View Consistency},
+  author={Huang, Sheng-Yu and Chou, Zi-Ting and Wang, Yu-Chiang Frank},
+  journal={arXiv preprint arXiv:2502.11801},
+  year={2025}
 }</code>
       </pre>
     </div>
@@ -620,7 +571,7 @@
             </p>
             <p>
               We thank the authors of
-              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+              We thank the authors of <a href="https://svraster.github.io/">SVRaster</a> that kindly open sourced the
               template of this website.
             </p>
           </div>
