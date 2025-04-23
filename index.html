@@ -25,6 +25,20 @@
   <script src="./static/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
 
+    <!-- KaTeX CSS -->
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+  integrity="sha384-vZTGRejGImKFl3blX/AiyfXU6sY9MWG7eGvAJ+EmtGDxoP1QjrY37eER++8UQng+" crossorigin="anonymous">
+  <!-- KaTeX auto-render extension -->
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+    integrity="sha384-C4xzpm4gCSy2Cnj0YmFg7pncY4sS6Bx66jTikJHfjTcS4/pp3CVmY4tP3rXLasWx" crossorigin="anonymous"></script>
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+    integrity="sha384-mll67QQrrpliuwQD0hZJGbNGaW3fydk5s/6U1KQO4WRcnQqV+KYsXbAz+xwzY2eB" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);">
+  </script>
+
 </head>
 
 <body>
@@ -166,7 +180,7 @@
           <div class="content has-text-justified">
             <p>
               Given a 3D Gaussian Splatting model
-              <code>G_{1:N}</code> pretrained on multi-view images
+              <code>$G_{1:N}$</code> pretrained on multi-view images
               <code>$I_{1:K}$</code> at camera poses
               <code>$\xi_{1:K}$</code>, our goal is to perform 3D inpainting based on
               the object masks <code>$M_{1:K}$</code> (e.g., provided by SAM). With
