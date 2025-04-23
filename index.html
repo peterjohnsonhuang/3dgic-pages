@@ -180,14 +180,14 @@
             <p>
               Given a 3D Gaussian Splatting model
               $G_{1:N}$ pretrained on multi-view images
-              <code>$I_{1:K}$</code> at camera poses
-              <code>$\xi_{1:K}$</code>, our goal is to perform 3D inpainting based on
-              the object masks <code>$M_{1:K}$</code> (e.g., provided by SAM). With
-              the rendered depth maps <code>$D_{1:K}$</code>, the stage of
+              $I_{1:K}$ at camera poses
+              $\xi_{1:K}$, our goal is to perform 3D inpainting based on
+              the object masks $M_{1:K}$ (e.g., provided by SAM). With
+              the rendered depth maps $D_{1:K}$, the stage of
               Inferring Depth-Guide Inpainting Mask is able to refine the inpainting
               masks to preserve visible backgrounds across camera views. The stage
               of Inpainting-guided 3DGS Refinement then utilizes such masks to joint-
-              ly update the new Gaussians <code>$G'_{1:N'}$</code> for both novel-view
+              ly update the new Gaussians $G'_{1:N'}$ for both novel-view
               rendering and inpainting purposes.
             </p>
           </div>
@@ -207,37 +207,27 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Adaptive Sparse Voxel Representation and Rendering</h2>
+          <h2 class="title is-3">Inferring Depth-Guided Inpainting Mask</h2>
           <div class="content has-text-justified">
             <p>
-              Our scene representation is a hybrid of primitive and volumetric model.
-              <strong>(a) Primitive component.</strong> We explicitly allocate voxels primitives to cover different scene level-of-details under an Octree layout. Note that we do not replicate a traditional Octree data structure with parent-child pointers or linear Octree. We only keep voxels at the Octree leaf nodes without any ancestor nodes.
-              <strong>(b) Volumetric component.</strong> Inside a voxel is a volumetric (trilinear) density field and a (constant) spherical harmonic field. We sample K points on the ray-voxel intersection segment to compute the intensity contribution from the voxel to the pixel with numerical integration.
+              Taking $\{I_1, M_1\}$ at view $\xi_1$ as an example reference view, the original background region $I^B_1$ can be first produced. We then project the background region $I^B_2$ from $\xi_2$ to $\xi_1$, updating ${I'}^B_1$ and the associated inpainting mask $M'_1$. By repeating this process across camera views, the final inpainting mask $M'_1$ contains only the regions that are \textit{not} visible at any training camera views.
             </p>
             <div style="max-width: 700px; margin: auto;">
-              <img src="./images/representations.jpg">
+              <img src="./images/mask_reduction.png">
             </div>
-            <br>
-            <br>
+            
+          </div>
+        </div>
+        <div class="column is-full-width">
+          <h2 class="title is-3">Difference of Inpainting Between Using Original Object Mask and Our Mask</h2>
+          <div class="content has-text-justified">
             <p>
-              Adaptive level-of-details is crucial to scalability and quality. Sparse voxels with uniform voxel size can not scale up.
+              Although the original object mask $M_1$ can be used to inpaint the occluded regions, it may also include some background regions. This leads to a inpainted background conflicting existing one. In contrast, our mask $M'_1$ is more accurate and can preserve visible background contents.
             </p>
-            <div style="max-width: 400px; margin: auto;">
-              <img src="./images/main_ablation.jpg">
+            <div style="max-width: 700px; margin: auto;">
+              <img src="./images/mask_diff.png">
             </div>
-            <br>
-            <br>
-            <p>
-              We sort voxels by ray direction-dependent Morton order, which ensures correct primitive blending order with mathematical proof. Sorting by primtive centers like 3DGS can produce inaccurate rendering.
-              The inaccurate sorting causes 3DGS popping artifact (see left video below) while we don't have this issue (right video).
-            </p>
-            <div style="margin: auto;">
-              <img src="./images/morton_order.jpg">
-            </div>
-            <video poster="" autoplay controls muted loop playsinline height="100%">
-              <source src="./videos/garden_sidebyside.mp4"
-                      type="video/mp4">
-            </video>
+            
           </div>
         </div>
       </div>
