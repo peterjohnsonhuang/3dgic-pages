@@ -36,34 +36,7 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // For every bal-container-small on the page…
-    document.querySelectorAll('.bal-container-small')
-      .forEach(container => {
-        const ours     = container.querySelector('.bal-video-ours');
-        const original = container.querySelector('.bal-video-original');
-        let readyCount = 0;
   
-        // Wait for both to be fully buffered…
-        [ours, original].forEach(video => {
-          video.addEventListener('canplaythrough', () => {
-            if (++readyCount === 2) {
-              // reset to zero and play together
-              ours.currentTime = original.currentTime = 0;
-              Promise.all([ours.play(), original.play()])
-                .catch(() => {
-                  console.warn('Autoplay prevented; user interaction may be needed.');
-                });
-            }
-          });
-        });
-  
-        // Optional: lock playback rates
-        ours.playbackRate = original.playbackRate = 1.0;
-      });
-  });
-  </script>
 
 
 
@@ -633,29 +606,34 @@
       </div>
     </div>
   </footer>
-  <!-- <script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const v1 = document.getElementById('video-ours');
-      const v2 = document.getElementById('video-original');
+      // For every bal-container-small on the page…
+      document.querySelectorAll('.bal-container-small')
+        .forEach(container => {
+          const ours     = container.querySelector('.bal-video-ours');
+          const original = container.querySelector('.bal-video-original');
+          let readyCount = 0;
     
-      // When both videos can play through, reset to 0 and start together
-      let readyCount = 0;
-      [v1, v2].forEach(v => {
-        v.addEventListener('canplaythrough', () => {
-          if (++readyCount === 2) {
-            v1.currentTime = v2.currentTime = 0;
-            Promise.all([v1.play(), v2.play()])
-              .catch(() => {
-                console.warn('Auto-play was prevented; user interaction may be required.');
-              });
-          }
+          // Wait for both to be fully buffered…
+          [ours, original].forEach(video => {
+            video.addEventListener('canplaythrough', () => {
+              if (++readyCount === 2) {
+                // reset to zero and play together
+                ours.currentTime = original.currentTime = 0;
+                Promise.all([ours.play(), original.play()])
+                  .catch(() => {
+                    console.warn('Autoplay prevented; user interaction may be needed.');
+                  });
+              }
+            });
+          });
+    
+          // Optional: lock playback rates
+          ours.playbackRate = original.playbackRate = 1.0;
         });
-      });
-    
-      // (Optional) lock them at the same playback rate
-      v1.playbackRate = v2.playbackRate = 1.0;
     });
-    </script> -->
+    </script>
 </body>
 
 </html>
