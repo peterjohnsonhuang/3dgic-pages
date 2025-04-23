@@ -1,3 +1,3 @@
 ### svraster.github.io
 
-### [page](https://svraster.github.io) | [code](https://github.com/NVlabs/svraster) | [paper](https://arxiv.org/abs/2412.04459)
+### [page](https://peterjohnsonhuang.github.io/3dgic-pages/) | [code](https://github.com/peterjohnsonhuang/3dgic) | [paper](https://arxiv.org/abs/2502.11801)
