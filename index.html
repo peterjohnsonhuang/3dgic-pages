@@ -262,10 +262,35 @@
               <div class="bal-before-inset" style="width: 512px;">
                 <img src="./videos/spinnerf_2_gt.gif">
                 <div class="bal-beforePosition beforeLabel">
-                  3DGS
+                  Original
                 </div>
               </div>
             </div>
+            <script>
+              window.addEventListener('load', () => {
+                const imgs = [
+                  document.querySelector('.bal-after img'),
+                  document.querySelector('.bal-before img')
+                ];
+                let loaded = 0;
+            
+                imgs.forEach(img => {
+                  // hide until we’re ready
+                  img.style.visibility = 'hidden';
+                  img.onload = () => {
+                    if (++loaded === imgs.length) {
+                      // both GIFs are cached → restart them in lock-step
+                      imgs.forEach(img => {
+                        const src = img.src;
+                        img.src = '';    // unload
+                        img.src = src;   // reload from cache
+                        img.style.visibility = 'visible';
+                      });
+                    }
+                  };
+                });
+              });
+            </script>
             <div class="bal-handle" style="left:96.4968152866242%;">
               <span class="handle-left-arrow"></span>
               <span class="handle-right-arrow"></span>
