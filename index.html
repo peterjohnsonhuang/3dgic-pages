@@ -249,97 +249,169 @@
 
 
   <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Inpainting Results on SPInNeRF Dataset</h2>
-      <div class="columns is-centered is-mobile">
-        <!-- Slider 1 -->
-        <div class="column is-half-mobile">
-          <div id="example1" class="bal-container-small">
-            <div class="bal-after">
-              <video class="bal-video-ours" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                <source src="./videos/spinnerf_2_ours.mp4" type="video/mp4">
-              </video>
-              <div class="afterLabel">Ours</div>
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Inpainting Results on SPInNeRF Dataset</h2>
+          <div class="content has-text-justified">
+            <div style="max-width: 700px; margin: auto;">
+              <img src="./images/qualitative_spin.jpg">
             </div>
-            <div class="bal-before" style="width:96.4968%;">
-              <div class="bal-before-inset" style="width:512px;">
-                <video class="bal-video-original" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                  <source src="./videos/spinnerf_2_gt.mp4" type="video/mp4">
-                </video>
-                <div class="beforeLabel">Original</div>
-              </div>
-            </div>
-            <div class="bal-handle"></div>
-          </div>
-        </div>
-
-        <!-- Slider 2 -->
-        <div class="column is-half-mobile">
-          <div id="example2" class="bal-container-small">
-            <div class="bal-after">
-              <video class="bal-video-ours" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                <source src="./videos/spinnerf_3_ours.mp4" type="video/mp4">
-              </video>
-              <div class="afterLabel">Ours</div>
-            </div>
-            <div class="bal-before" style="width:62.1019%;">
-              <div class="bal-before-inset" style="width:512px;">
-                <video class="bal-video-original" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                  <source src="./videos/spinnerf_3_gt.mp4" type="video/mp4">
-                </video>
-                <div class="beforeLabel">Original</div>
-              </div>
-            </div>
-            <div class="bal-handle"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns is-centered is-mobile">
-        <!-- Slider 3 -->
-        <div class="column is-half-mobile">
-          <div id="example3" class="bal-container-small">
-            <div class="bal-after">
-              <video class="bal-video-ours" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                <source src="./videos/bear_ours.mp4" type="video/mp4">
-              </video>
-              <div class="afterLabel">Ours</div>
-            </div>
-            <div class="bal-before" style="width:96.4968%;">
-              <div class="bal-before-inset" style="width:512px;">
-                <video class="bal-video-original" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                  <source src="./videos/bear_gt.mp4" type="video/mp4">
-                </video>
-                <div class="beforeLabel">Original</div>
-              </div>
-            </div>
-            <div class="bal-handle"></div>
-          </div>
-        </div>
-
-        <!-- Slider 4 -->
-        <div class="column is-half-mobile">
-          <div id="example4" class="bal-container-small">
-            <div class="bal-after">
-              <video class="bal-video-ours" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                <source src="./videos/kitchen_ours.mp4" type="video/mp4">
-              </video>
-              <div class="afterLabel">Ours</div>
-            </div>
-            <div class="bal-before" style="width:62.1019%;">
-              <div class="bal-before-inset" style="width:512px;">
-                <video class="bal-video-original" autoplay loop muted playsinline preload="auto" style="width:100%;">
-                  <source src="./videos/kitchen_gt.mp4" type="video/mp4">
-                </video>
-                <div class="beforeLabel">Original</div>
-              </div>
-            </div>
-            <div class="bal-handle"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Inpainting Results on SPInNeRF Dataset</h2>
+        <div class="column is-half">
+          <div id="example1" class="bal-container-small">
+            <div class="bal-after">
+              <video
+                class="bal-video-ours"
+                autoplay loop muted playsinline webkit-playsinline preload="auto"
+                style="width:100%; display:block;">
+                <source src="./videos/spinnerf_2_ours.mp4" type="video/mp4">
+              </video>
+              <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                Ours
+              </div>
+            </div>
+            
+            <div class="bal-before" style="width:96.4968%;">
+              <div class="bal-before-inset" style="width:512px;">
+                <video
+                  class="bal-video-original"
+                  autoplay loop muted playsinline webkit-playsinline preload="auto"
+                  style="width:100%; display:block;">
+                  <source src="./videos/spinnerf_2_gt.mp4" type="video/mp4">
+                </video>
+                <div class="bal-beforePosition beforeLabel">
+                  Original
+                </div>
+              </div>
+            </div>
+            
+            <div class="bal-handle" style="left:96.4968152866242%;">
+              <span class="handle-left-arrow"></span>
+              <span class="handle-right-arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="column is-half">
+            <div class="column content">
+              <div id="example2" class="bal-container-small">
+                <div class="bal-after">
+                  <video
+                    class="bal-video-ours"
+                    autoplay loop muted playsinline webkit-playsinline preload="auto"
+                    style="width:100%; display:block;">
+                    <source src="./videos/spinnerf_3_ours.mp4" type="video/mp4">
+                  </video>
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+                <div class="bal-before" style="width:62.10191082802548%;">
+                  <div class="bal-before-inset" style="width: 512px;">
+                    <video
+                      class="bal-video-original"
+                      autoplay loop muted playsinline webkit-playsinline preload="auto"
+                      style="width:100%; display:block;">
+                      <source src="./videos/spinnerf_3_gt.mp4" type="video/mp4">
+                    </video>
+                    <div class="bal-beforePosition beforeLabel">
+                      Original
+                    </div>
+                  </div>
+                </div>
+                <div class="bal-handle" style="left:62.10191082802548%;">
+                  <span class="handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div id="example3" class="bal-container-small">
+            <div class="bal-after">
+              <video
+                class="bal-video-ours"
+                autoplay loop muted playsinline webkit-playsinline preload="auto"
+                style="width:100%; display:block;">
+                <source src="./videos/bear_ours.mp4" type="video/mp4">
+              </video>
+              <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                Ours
+              </div>
+            </div>
+            
+            <div class="bal-before" style="width:96.4968%;">
+              <div class="bal-before-inset" style="width:512px;">
+                <video
+                  class="bal-video-original"
+                  autoplay loop muted playsinline webkit-playsinline preload="auto"
+                  style="width:100%; display:block;">
+                  <source src="./videos/bear_gt.mp4" type="video/mp4">
+                </video>
+                <div class="bal-beforePosition beforeLabel">
+                  Original
+                </div>
+              </div>
+            </div>
+            
+            <div class="bal-handle" style="left:96.4968152866242%;">
+              <span class="handle-left-arrow"></span>
+              <span class="handle-right-arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="column is-half">
+            <div class="column content">
+              <div id="example4" class="bal-container-small">
+                <div class="bal-after">
+                  <video
+                    class="bal-video-ours"
+                    autoplay loop muted playsinline webkit-playsinline preload="auto"
+                    style="width:100%; display:block;">
+                    <source src="./videos/kitchen_ours.mp4" type="video/mp4">
+                  </video>
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+                <div class="bal-before" style="width:62.10191082802548%;">
+                  <div class="bal-before-inset" style="width: 512px;">
+                    <video
+                      class="bal-video-original"
+                      autoplay loop muted playsinline webkit-playsinline preload="auto"
+                      style="width:100%; display:block;">
+                      <source src="./videos/kitchen_gt.mp4" type="video/mp4">
+                    </video>
+                    <div class="bal-beforePosition beforeLabel">
+                      Original
+                    </div>
+                  </div>
+                </div>
+                <div class="bal-handle" style="left:62.10191082802548%;">
+                  <span class="handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- <div class="columns is-centered">
         <div class="column is-full-width">
@@ -392,8 +464,8 @@
         </div>
       </div> -->
 
-    <!-- </div>
-  </section> -->
+    </div>
+  </section>
 
 
   <section class="section">
