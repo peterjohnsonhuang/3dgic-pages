@@ -257,7 +257,7 @@
             <div class="bal-after">
               <video
                 class="bal-video-ours"
-                loop muted playsinline preload="auto"
+                autoplay loop muted playsinline webkit-playsinline preload="auto"
                 style="width:100%; display:block;">
                 <source src="./videos/spinnerf_2_ours.mp4" type="video/mp4">
               </video>
@@ -270,7 +270,7 @@
               <div class="bal-before-inset" style="width:512px;">
                 <video
                   class="bal-video-original"
-                  loop muted playsinline preload="auto"
+                  autoplay loop muted playsinline webkit-playsinline preload="auto"
                   style="width:100%; display:block;">
                   <source src="./videos/spinnerf_2_gt.mp4" type="video/mp4">
                 </video>
@@ -293,7 +293,7 @@
                 <div class="bal-after">
                   <video
                     class="bal-video-ours"
-                    loop muted playsinline preload="auto"
+                    autoplay loop muted playsinline webkit-playsinline preload="auto"
                     style="width:100%; display:block;">
                     <source src="./videos/spinnerf_3_ours.mp4" type="video/mp4">
                   </video>
@@ -305,7 +305,7 @@
                   <div class="bal-before-inset" style="width: 512px;">
                     <video
                       class="bal-video-original"
-                      loop muted playsinline preload="auto"
+                      autoplay loop muted playsinline webkit-playsinline preload="auto"
                       style="width:100%; display:block;">
                       <source src="./videos/spinnerf_3_gt.mp4" type="video/mp4">
                     </video>
@@ -330,7 +330,7 @@
             <div class="bal-after">
               <video
                 class="bal-video-ours"
-                loop muted playsinline preload="auto"
+                autoplay loop muted playsinline webkit-playsinline preload="auto"
                 style="width:100%; display:block;">
                 <source src="./videos/bear_ours.mp4" type="video/mp4">
               </video>
@@ -343,7 +343,7 @@
               <div class="bal-before-inset" style="width:512px;">
                 <video
                   class="bal-video-original"
-                  loop muted playsinline preload="auto"
+                  autoplay loop muted playsinline webkit-playsinline preload="auto"
                   style="width:100%; display:block;">
                   <source src="./videos/bear_gt.mp4" type="video/mp4">
                 </video>
@@ -366,7 +366,7 @@
                 <div class="bal-after">
                   <video
                     class="bal-video-ours"
-                    loop muted playsinline preload="auto"
+                    autoplay loop muted playsinline webkit-playsinline preload="auto"
                     style="width:100%; display:block;">
                     <source src="./videos/kitchen_ours.mp4" type="video/mp4">
                   </video>
@@ -378,7 +378,7 @@
                   <div class="bal-before-inset" style="width: 512px;">
                     <video
                       class="bal-video-original"
-                      loop muted playsinline preload="auto"
+                      autoplay loop muted playsinline webkit-playsinline preload="auto"
                       style="width:100%; display:block;">
                       <source src="./videos/kitchen_gt.mp4" type="video/mp4">
                     </video>
@@ -579,7 +579,7 @@
       </div>
     </div>
   </footer>
-  <script>
+  <!-- <script>
     document.addEventListener('DOMContentLoaded', () => {
       // For every bal-container-small on the page…
       document.querySelectorAll('.bal-container-small')
@@ -606,7 +606,31 @@
           ours.playbackRate = original.playbackRate = 1.0;
         });
     });
-    </script>
+    </script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.bal-container-small').forEach(container => {
+          const ours     = container.querySelector('.bal-video-ours');
+          const original = container.querySelector('.bal-video-original');
+          let readyCount = 0;
+      
+          [ours, original].forEach(v => {
+            v.addEventListener('canplaythrough', () => {
+              if (++readyCount === 2) {
+                ours.currentTime = original.currentTime = 0;
+                Promise.all([ours.play(), original.play()])
+                  .catch(() => {
+                    // on iOS, this usually won't fire because we have autoplay+muted
+                  });
+              }
+            });
+          });
+      
+          // lock playback rates
+          ours.playbackRate = original.playbackRate = 1.0;
+        });
+      });
+      </script>
 </body>
 
 </html>
