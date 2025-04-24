@@ -258,7 +258,7 @@
               <video
                 class="bal-video-ours"
                 autoplay loop muted playsinline webkit-playsinline preload="auto"
-                style="height:100%; display:block;">
+                style="width:100%; display:block;">
                 <source src="./videos/spinnerf_2_ours.mp4" type="video/mp4">
               </video>
               <div class="bal-afterPosition afterLabel" style="z-index:1;">
@@ -266,15 +266,17 @@
               </div>
             </div>
             
-            <div class="bal-before">
-              <video
-                class="bal-video-original"
-                autoplay loop muted playsinline webkit-playsinline preload="auto"
-                style="height:100%; display:block;">
-                <source src="./videos/spinnerf_2_gt.mp4" type="video/mp4">
-              </video>
-              <div class="bal-beforePosition beforeLabel">
-                Original
+            <div class="bal-before" style="width:96.4968%;">
+              <div class="bal-before-inset" style="width:512px;">
+                <video
+                  class="bal-video-original"
+                  autoplay loop muted playsinline webkit-playsinline preload="auto"
+                  style="width:100%; display:block;">
+                  <source src="./videos/spinnerf_2_gt.mp4" type="video/mp4">
+                </video>
+                <div class="bal-beforePosition beforeLabel">
+                  Original
+                </div>
               </div>
             </div>
             
@@ -513,7 +515,7 @@
     </div>
   </section> -->
 
-  <script>
+  <!-- <script>
     new BeforeAfter({
       id: '#example1'
     });
@@ -531,6 +533,13 @@
     });
     new BeforeAfter({
       id: '#example6'
+    });
+  </script> -->
+
+  <script>
+    const ar = 566 / 1008;
+    ['#example1','#example2','#example3','#example4'].forEach(id => {
+      new BeforeAfter({ id, ratio: ar });
     });
   </script>
 
