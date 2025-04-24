@@ -36,18 +36,6 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 
-  <style>
-    .columns.is-centered {
-      align-items: flex-start;
-    }
-    .bal-container-small {
-      display: inline-block;
-      position: relative;
-      width: 512px;
-      height: auto;
-    }
-  </style>
-
   
 
 
@@ -264,7 +252,7 @@
       </div>
 
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-full-width">
           <div id="example1" class="bal-container-small">
             <div class="bal-after">
               <video
@@ -298,42 +286,46 @@
             </div>
           </div>
         </div>
-        <div class="column is-half">
-          <div id="example2" class="bal-container-small">
-            <div class="bal-after">
-              <video
-                class="bal-video-ours"
-                autoplay loop muted playsinline webkit-playsinline preload="auto"
-                style="width:100%; display:block;">
-                <source src="./videos/spinnerf_3_ours.mp4" type="video/mp4">
-              </video>
-              <div class="bal-afterPosition afterLabel" style="z-index:1;">
-                Ours
-              </div>
-            </div>
-            <div class="bal-before" style="width:62.10191082802548%;">
-              <div class="bal-before-inset" style="width: 512px;">
-                <video
-                  class="bal-video-original"
-                  autoplay loop muted playsinline webkit-playsinline preload="auto"
-                  style="width:100%; display:block;">
-                  <source src="./videos/spinnerf_3_gt.mp4" type="video/mp4">
-                </video>
-                <div class="bal-beforePosition beforeLabel">
-                  Original
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+              <div id="example2" class="bal-container-small">
+                <div class="bal-after">
+                  <video
+                    class="bal-video-ours"
+                    autoplay loop muted playsinline webkit-playsinline preload="auto"
+                    style="width:100%; display:block;">
+                    <source src="./videos/spinnerf_3_ours.mp4" type="video/mp4">
+                  </video>
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+                <div class="bal-before" style="width:62.10191082802548%;">
+                  <div class="bal-before-inset" style="width: 512px;">
+                    <video
+                      class="bal-video-original"
+                      autoplay loop muted playsinline webkit-playsinline preload="auto"
+                      style="width:100%; display:block;">
+                      <source src="./videos/spinnerf_3_gt.mp4" type="video/mp4">
+                    </video>
+                    <div class="bal-beforePosition beforeLabel">
+                      Original
+                    </div>
+                  </div>
+                </div>
+                <div class="bal-handle" style="left:62.10191082802548%;">
+                  <span class="handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
                 </div>
               </div>
-            </div>
-            <div class="bal-handle" style="left:62.10191082802548%;">
-              <span class="handle-left-arrow"></span>
-              <span class="handle-right-arrow"></span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-full-width">
           <div id="example3" class="bal-container-small">
             <div class="bal-after">
               <video
@@ -368,7 +360,7 @@
           </div>
         </div>
         <div class="column">
-          <div class="column is-half">
+          <div class="columns is-centered">
             <div class="column content">
               <div id="example4" class="bal-container-small">
                 <div class="bal-after">
